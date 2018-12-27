@@ -1,0 +1,27 @@
+nav {
+    background: #9fc4f8;
+    width: 900px;
+    height: 60px;
+    border-width:0.5px;
+    border-style: solid;
+    text-align: left;
+    h1 {
+        margin-left: 20px;
+    }
+    div{
+    display: flex;
+      height: 550px;
+      div.leftSide {
+        border-width:0.5px;
+        border-style: solid;
+        width: 500px;
+      }
+      
+      div.rightSide {
+        border-width:0.5px;
+        border-style: solid;
+        width: 400px;
+      }
+    }
+   
+}

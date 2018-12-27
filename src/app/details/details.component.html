@@ -1,0 +1,28 @@
+<fieldset>
+  <legend>Product Details</legend>
+  <div *ngIf = "currentProduct != undefined">
+  <div>
+      <img class="image" src="{{ currentProduct.thumbnailUrl}}" alt="" />
+  </div>
+  <div class="name" >
+    Name
+    <div><input type="text"  [(ngModel)]="currentProduct.name">      
+    </div>
+  </div>
+  <div class="description" >
+    Product Description
+    <div>
+        <input type="text"  [(ngModel)]="currentProduct.description"> 
+    </div>
+  </div> 
+  <div class="price" >
+    Price
+    <div>
+        <input type="text"  [(ngModel)]="currentProduct.price"> 
+    </div>
+  </div> 
+  <div class="buttons">
+      <button class="clean-gray"  [disabled] = "currentProduct.price <= 0 || currentProduct.name == ''" (click)="saveItem()">Save</button>
+    </div>
+    </div>
+  </fieldset>

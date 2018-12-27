@@ -1,0 +1,34 @@
+    <div class="actions">
+      <div class="actButtons">
+        <button class="clean-gray" (click)="addProduct($event)">Add</button>  
+      </div>
+      <div class="filter">
+          <input type="text" [(ngModel)]="filterValue" placeholder="search name or description">
+      </div>
+      <div class="orderBy">    
+         <select [(ngModel)]="selectedOrder" >
+           <option value="creationDate">creationOrder</option>
+           <option value="name">name</option>
+         </select>
+       </div>
+    </div>
+<ul>
+  <li class="container" *ngFor="let product of filteredProducts | sort: selectedOrder |paginate: { itemsPerPage:3, currentPage: p, totalItems: total}">
+    <div [ngClass]="[selectedProduct$ != undefined && selectedProduct$.id == product.id ? 'item active' : 'item']" 
+    (click)="selectProduct($event,product)" id="{{product.id}}">
+      <div class="thumb">
+        <img class="image" src="{{ product.thumbnailUrl}}" alt="" />
+      </div>
+      <div class="description">
+        <span class="title">{{ product.name }}</span>
+        <span>{{ product.description }}</span>
+        <div class="buttons">
+          <button class="clean-gray" (click)="removeProduct($event,'active',product)">Remove</button>
+        </div>
+      </div>
+    </div>
+
+  </li>
+</ul>
+<pagination-controls (pageChange)="p =$event" class="paging"
+screenReaderCurrentLabel="You're on page"></pagination-controls>
